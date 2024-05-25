@@ -139,13 +139,11 @@ const tableButtons = ref([
   },
 ]);
 
-const dataUpdate = ref([
-  {
-    id:"",
-    name: "",
-    age: ""
-  }
-]);
+const dataUpdate = ref({
+  id:"",
+  name: "",
+  age: ""
+});
 
 const tempData = ref({
   name: "",
@@ -195,9 +193,10 @@ const handleDelete = async (idData) => {
 
 const handleUpdate = async (idData, nameData, ageData) => {
   const updatedItem = { id:idData, name:nameData, age:ageData };
+  console.log(updatedItem)
   
   try {
-    await axios.put(`https://dahua.metcfire.com.tw/api/CRUDTest/${id}`, updatedItem);
+    await axios.put(`https://dahua.metcfire.com.tw/api/CRUDTest/${idData}`, updatedItem);
 
     modal.value = false;
     await axiosData();
